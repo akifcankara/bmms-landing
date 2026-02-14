@@ -80,8 +80,8 @@ export default function HeroSection() {
               <AppImage
                 src="https://images.unsplash.com/photo-1617559057121-5ccad3b7571b"
                 alt="Modern Dubai skyline at sunset with Burj Khalifa tower and illuminated skyscrapers reflecting in water"
-                className="w-full h-[500px] object-cover grayscale-[10%] hover:grayscale-0 transition-all duration-700" />
-              
+                className="w-full h-[300px] md:h-[500px] object-cover grayscale-[10%] hover:grayscale-0 transition-all duration-700" />
+
 
               {/* Floating Badge */}
               <div className="absolute bottom-8 left-8 glass-card p-4 flex items-center gap-4">
