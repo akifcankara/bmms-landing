@@ -30,16 +30,6 @@ const nextConfig = {
         hostname: 'img.rocket.new',
       },
     ],
-  },
-
-  async redirects() {
-    return [
-      {
-        source: '/',
-        destination: '/homepage',
-        permanent: false,
-      },
-    ];
   }
 };
 

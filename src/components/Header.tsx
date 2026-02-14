@@ -39,7 +39,7 @@ export default function Header() {
   }, [pathname]);
 
   const navLinks = [
-    { id: 'nav_home', label: 'Home', href: '/homepage' },
+    { id: 'nav_home', label: 'Home', href: '/' },
     { id: 'nav_services', label: 'Services', href: '/services' },
     { id: 'nav_resources', label: 'Resources', href: '#resources' },
     { id: 'nav_about', label: 'About', href: '#about' },
@@ -54,7 +54,7 @@ export default function Header() {
   return (
     <nav
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${isScrolled
-          ? 'bg-background/80 backdrop-blur-md border-b border-border' : 'bg-transparent'
+        ? 'bg-background/80 backdrop-blur-md border-b border-border' : 'bg-transparent'
         }`}
     >
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
@@ -73,7 +73,7 @@ export default function Header() {
               key={link.id}
               href={link.href}
               className={`transition-colors ${isActive(link.href)
-                  ? 'text-accent font-semibold' : 'hover:text-primary'
+                ? 'text-accent font-semibold' : 'hover:text-primary'
                 }`}
             >
               {link.label}
@@ -116,7 +116,7 @@ export default function Header() {
                 href={link.href}
                 onClick={() => setIsMobileMenuOpen(false)}
                 className={`block text-sm font-medium transition-colors ${isActive(link.href)
-                    ? 'text-accent font-semibold' : 'text-muted-foreground hover:text-foreground'
+                  ? 'text-accent font-semibold' : 'text-muted-foreground hover:text-foreground'
                   }`}
               >
                 {link.label}
