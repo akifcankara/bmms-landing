@@ -94,11 +94,11 @@ export default function Header() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden text-foreground hover:text-accent transition-colors"
+            className="md:hidden text-primary hover:text-accent transition-colors"
             aria-label="Toggle mobile menu"
           >
             <Icon
-              name={isMobileMenuOpen ? 'XMarkIcon' : 'Bars3Icon'}
+              name="Bars3Icon"
               size={24}
               variant="outline"
             />
@@ -106,32 +106,65 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Mobile Menu Dropdown */}
-      {isMobileMenuOpen && (
-        <div className="md:hidden bg-card/95 backdrop-blur-md border-b border-border">
-          <div className="px-6 py-4 space-y-4">
-            {navLinks.map((link) => (
-              <Link
-                key={link.id}
-                href={link.href}
-                onClick={() => setIsMobileMenuOpen(false)}
-                className={`block text-sm font-medium transition-colors ${isActive(link.href)
-                  ? 'text-accent font-semibold' : 'text-muted-foreground hover:text-foreground'
-                  }`}
-              >
-                {link.label}
-              </Link>
-            ))}
-            <Link
-              href="/contact"
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="block w-full text-center btn-primary"
-            >
-              Get Started
-            </Link>
-          </div>
+      {/* Mobile Menu Overlay */}
+      <div
+        className={`fixed inset-0 bg-black/50 backdrop-blur-sm z-40 md:hidden transition-opacity duration-300 ${
+          isMobileMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
+        }`}
+        onClick={() => setIsMobileMenuOpen(false)}
+      />
+
+      {/* Mobile Menu Slide Panel */}
+      <div
+        className={`fixed top-0 left-0 h-full w-full bg-white z-50 md:hidden transform transition-transform duration-300 ease-in-out shadow-2xl ${
+          isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'
+        }`}
+      >
+        {/* Header with Logo and Close Button */}
+        <div className="flex items-center justify-between p-6 border-b border-gray-200">
+          <Link
+            href="/"
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="text-lg font-bold tracking-tight uppercase text-[rgba(59,130,246,0.8)] hover:text-accent transition-colors"
+          >
+            Bridgemena
+          </Link>
+          <button
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="text-gray-800 hover:text-accent transition-colors"
+            aria-label="Close menu"
+          >
+            <Icon name="XMarkIcon" size={28} variant="outline" />
+          </button>
         </div>
-      )}
+
+        {/* Menu Items */}
+        <div className="px-6 py-4 space-y-6">
+          {navLinks.map((link) => (
+            <Link
+              key={link.id}
+              href={link.href}
+              onClick={() => setIsMobileMenuOpen(false)}
+              className={`block text-base font-medium transition-colors ${
+                isActive(link.href)
+                  ? 'text-accent font-semibold'
+                  : 'text-gray-800 hover:text-accent'
+              }`}
+            >
+              {link.label}
+            </Link>
+          ))}
+
+          {/* CTA Button */}
+          <Link
+            href="/contact"
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="block w-full text-center btn-primary mt-8"
+          >
+            Get Started
+          </Link>
+        </div>
+      </div>
     </nav>
   );
 }
