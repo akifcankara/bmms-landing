@@ -4,6 +4,8 @@ import Footer from '@/components/Footer';
 import ServicesInteractive from './components/ServicesInteractive';
 import ProcessTimeline from './components/ProcessTimeline';
 import ComparisonTable from './components/ComparisonTable';
+import ServiceSchema from '@/components/schema/ServiceSchema';
+import BreadcrumbSchema from '@/components/schema/BreadcrumbSchema';
 
 export const metadata: Metadata = {
   title: 'Services - Bridgemena | Company Formation, Visa, HR, Accounting & More',
@@ -53,8 +55,15 @@ export const metadata: Metadata = {
 };
 
 export default function ServicesPage() {
+  const breadcrumbItems = [
+    { name: 'Home', url: '/' },
+    { name: 'Services', url: '/services' },
+  ];
+
   return (
     <>
+      <ServiceSchema />
+      <BreadcrumbSchema items={breadcrumbItems} />
       <Header />
       <main className="min-h-screen pt-32 pb-20">
         {/* Page Header */}

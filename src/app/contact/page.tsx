@@ -6,6 +6,8 @@ import QuickContact from './components/QuickContact';
 import OfficeLocations from './components/OfficeLocations';
 import FAQPreview from './components/FAQPreview';
 import Icon from '@/components/ui/AppIcon';
+import LocalBusinessSchema from '@/components/schema/LocalBusinessSchema';
+import BreadcrumbSchema from '@/components/schema/BreadcrumbSchema';
 
 
 export const metadata: Metadata = {
@@ -56,8 +58,15 @@ export const metadata: Metadata = {
 };
 
 export default function ContactPage() {
+  const breadcrumbItems = [
+    { name: 'Home', url: '/' },
+    { name: 'Contact', url: '/contact' },
+  ];
+
   return (
     <>
+      <LocalBusinessSchema />
+      <BreadcrumbSchema items={breadcrumbItems} />
       <Header />
       <main className="min-h-screen pt-32 pb-20">
         {/* Page Header */}

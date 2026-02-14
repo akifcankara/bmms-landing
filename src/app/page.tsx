@@ -7,6 +7,7 @@ import ServicesOverview from './components/ServicesOverview';
 import WhySection from './components/WhySection';
 import IndustryFocus from './components/IndustryFocus';
 import CTASection from './components/CTASection';
+import FAQSchema from '@/components/schema/FAQSchema';
 
 export const metadata: Metadata = {
   title: 'Bridgemena - Expand Your Business to MENA | UAE & KSA Market Entry',
@@ -58,6 +59,7 @@ export const metadata: Metadata = {
 export default function Homepage() {
   return (
     <>
+      <FAQSchema />
       <Header />
       <main className="min-h-screen">
         <HeroSection />

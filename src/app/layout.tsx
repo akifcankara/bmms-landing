@@ -1,6 +1,7 @@
 import React from 'react';
 import type { Metadata, Viewport } from 'next';
 import '../styles/index.css';
+import OrganizationSchema from '@/components/schema/OrganizationSchema';
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -24,8 +25,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}
-</body>
+      <head>
+        <OrganizationSchema />
+      </head>
+      <body>{children}</body>
     </html>
   );
 }
