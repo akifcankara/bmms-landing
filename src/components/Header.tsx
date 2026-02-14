@@ -109,19 +109,32 @@ export default function Header() {
               {/* Dropdown Menu */}
               {link.subMenu && (
                 <div className="fixed left-0 right-0 top-16 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 ease-in-out z-40">
-                  <div className="bg-white border-t border-gray-200 shadow-lg py-6">
+                  <div className="bg-white border-t border-gray-200 shadow-xl py-8">
                     <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                       {link.subMenu.map((subItem, index) => (
                         <Link
                           key={index}
                           href={subItem.href}
-                          className="block px-4 py-3 rounded-lg hover:bg-blue-50 transition-colors group/item"
+                          className="group/item relative block p-5 rounded-xl border border-gray-200 hover:border-accent hover:shadow-lg transition-all duration-300 bg-gradient-to-br from-white to-blue-50/30"
                         >
-                          <div className="font-semibold text-gray-800 text-sm group-hover/item:text-accent transition-colors">
-                            {subItem.label}
-                          </div>
-                          <div className="text-xs text-gray-500 mt-0.5">
-                            {subItem.description}
+                          {/* Hover indicator */}
+                          <div className="absolute left-0 top-0 bottom-0 w-1 bg-accent rounded-l-xl opacity-0 group-hover/item:opacity-100 transition-opacity" />
+
+                          <div className="flex items-start gap-3">
+                            {/* Icon circle */}
+                            <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center group-hover/item:bg-accent/20 transition-colors">
+                              <Icon name="CheckCircleIcon" size={20} variant="outline" className="text-accent" />
+                            </div>
+
+                            <div className="flex-1">
+                              <div className="font-semibold text-gray-900 text-sm mb-1 group-hover/item:text-accent transition-colors flex items-center gap-2">
+                                {subItem.label}
+                                <Icon name="ArrowRightIcon" size={14} variant="outline" className="opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all text-accent" />
+                              </div>
+                              <div className="text-xs text-gray-600 leading-relaxed">
+                                {subItem.description}
+                              </div>
+                            </div>
                           </div>
                         </Link>
                       ))}
