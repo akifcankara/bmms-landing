@@ -35,7 +35,7 @@ export default function QuickContact() {
 
   return (
     <div className="space-y-6">
-      <h3 className="text-2xl font-bold text-foreground mb-6">Quick Contact</h3>
+      <h3 className="text-2xl font-bold text-[rgba(84,130,176,1)] mb-6">Quick Contact</h3>
 
       {methods.map((method) => (
         <a
@@ -46,11 +46,11 @@ export default function QuickContact() {
           className="glass-card p-6 flex items-center gap-4 hover-glow group transition-all"
         >
           <div className="h-12 w-12 rounded-xl bg-accent/20 flex items-center justify-center group-hover:bg-accent/30 transition-colors">
-            <Icon name={method.icon as any} size={24} variant="outline" className="text-accent" />
+            <Icon name={method.icon as any} size={24} variant="outline" className="text-white" />
           </div>
           <div>
-            <p className="text-sm font-medium text-muted-foreground">{method.label}</p>
-            <p className="text-base font-semibold text-foreground group-hover:text-accent transition-colors">
+            <p className="text-sm font-medium text-white">{method.label}</p>
+            <p className="text-base font-semibold text-foreground transition-colors">
               {method.value}
             </p>
           </div>
@@ -61,10 +61,10 @@ export default function QuickContact() {
       <div className="glass-card p-6 mt-8">
         <div className="flex items-start gap-4">
           <div className="h-12 w-12 rounded-xl bg-accent/20 flex items-center justify-center flex-shrink-0">
-            <Icon name="ClockIcon" size={24} variant="outline" className="text-accent" />
+            <Icon name="ClockIcon" size={24} variant="outline" className="text-white" />
           </div>
           <div>
-            <p className="text-sm font-medium text-muted-foreground mb-2">Working Hours</p>
+            <p className="text-sm font-medium text-white mb-2">Working Hours</p>
             <p className="text-sm text-foreground">Sunday - Thursday: 9:00 AM - 6:00 PM</p>
             <p className="text-sm text-foreground">Friday - Saturday: Closed</p>
             <p className="text-xs text-muted-foreground mt-2">UAE Time (GMT+4)</p>

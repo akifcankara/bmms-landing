@@ -47,7 +47,7 @@ export default function ContactForm() {
       <form onSubmit={handleSubmit} className="space-y-6">
         {/* Name */}
         <div>
-          <label htmlFor="name" className="block text-sm font-medium text-muted-foreground mb-2">
+          <label htmlFor="name" className="block text-sm font-medium text-white mb-2">
             Full Name *
           </label>
           <input
@@ -57,14 +57,14 @@ export default function ContactForm() {
             value={formData.name}
             onChange={handleChange}
             required
-            className="w-full bg-transparent border-b border-border py-3 text-sm text-foreground focus:outline-none focus:border-accent transition-colors placeholder:text-muted"
+            className="w-full bg-transparent border-b border-border py-3 text-sm text-white focus:outline-none focus:border-accent transition-colors placeholder:text-white"
             placeholder="John Doe" />
 
         </div>
 
         {/* Email */}
         <div>
-          <label htmlFor="email" className="block text-sm font-medium text-muted-foreground mb-2">
+          <label htmlFor="email" className="block text-sm font-medium text-white mb-2">
             Email Address *
           </label>
           <input
@@ -74,14 +74,14 @@ export default function ContactForm() {
             value={formData.email}
             onChange={handleChange}
             required
-            className="w-full bg-transparent border-b border-border py-3 text-sm text-foreground focus:outline-none focus:border-accent transition-colors placeholder:text-muted"
+            className="w-full bg-transparent border-b border-border py-3 text-sm text-white focus:outline-none focus:border-accent transition-colors placeholder:text-white"
             placeholder="john@company.com" />
 
         </div>
 
         {/* Phone */}
         <div>
-          <label htmlFor="phone" className="block text-sm font-medium text-muted-foreground mb-2">
+          <label htmlFor="phone" className="block text-sm font-medium text-white mb-2">
             Phone Number *
           </label>
           <input
@@ -91,14 +91,14 @@ export default function ContactForm() {
             value={formData.phone}
             onChange={handleChange}
             required
-            className="w-full bg-transparent border-b border-border py-3 text-sm text-foreground focus:outline-none focus:border-accent transition-colors placeholder:text-muted"
+            className="w-full bg-transparent border-b border-border py-3 text-sm text-white focus:outline-none focus:border-accent transition-colors placeholder:text-white"
             placeholder="+971 50 123 4567" />
 
         </div>
 
         {/* Company */}
         <div>
-          <label htmlFor="company" className="block text-sm font-medium text-muted-foreground mb-2">
+          <label htmlFor="company" className="block text-sm font-medium text-white mb-2">
             Company Name
           </label>
           <input
@@ -107,14 +107,14 @@ export default function ContactForm() {
             name="company"
             value={formData.company}
             onChange={handleChange}
-            className="w-full bg-transparent border-b border-border py-3 text-sm text-foreground focus:outline-none focus:border-accent transition-colors placeholder:text-muted"
+            className="w-full bg-transparent border-b border-border py-3 text-sm text-white focus:outline-none focus:border-accent transition-colors placeholder:text-white"
             placeholder="Your Company Ltd" />
 
         </div>
 
         {/* Message */}
         <div>
-          <label htmlFor="message" className="block text-sm font-medium text-muted-foreground mb-2">
+          <label htmlFor="message" className="block text-sm font-medium text-white mb-2">
             Message *
           </label>
           <textarea
@@ -124,7 +124,7 @@ export default function ContactForm() {
             onChange={handleChange}
             required
             rows={4}
-            className="w-full bg-transparent border border-border rounded-lg p-4 text-sm text-foreground focus:outline-none focus:border-accent transition-colors placeholder:text-muted resize-none"
+            className="w-full bg-transparent border border-border rounded-lg p-4 text-sm text-white focus:outline-none focus:border-accent transition-colors placeholder:text-white resize-none"
             placeholder="Tell us about your expansion plans..." />
 
         </div>
@@ -136,12 +136,12 @@ export default function ContactForm() {
           className="w-full btn-primary flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed">
 
           {isSubmitting ?
-          <>
+            <>
               <Icon name="ArrowPathIcon" size={16} variant="outline" className="text-white animate-spin" />
               Sending...
             </> :
 
-          <>
+            <>
               Send Message
               <Icon name="PaperAirplaneIcon" size={16} variant="outline" className="text-white" />
             </>
@@ -150,7 +150,7 @@ export default function ContactForm() {
 
         {/* Success Message */}
         {submitStatus === 'success' &&
-        <div className="p-4 rounded-lg bg-success/20 border border-success/30 flex items-center gap-3">
+          <div className="p-4 rounded-lg bg-success/20 border border-success/30 flex items-center gap-3">
             <Icon name="CheckCircleIcon" size={20} variant="solid" className="text-success" />
             <p className="text-sm text-foreground">
               Thank you! We'll get back to you within 24 hours.

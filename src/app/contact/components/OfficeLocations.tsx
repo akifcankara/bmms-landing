@@ -11,30 +11,30 @@ interface Office {
 
 export default function OfficeLocations() {
   const offices: Office[] = [
-  {
-    id: 'dubai',
-    city: 'Dubai',
-    country: 'United Arab Emirates',
-    address: 'Office 2301, Burj Khalifa Boulevard, Downtown Dubai, Dubai, UAE',
-    phone: '+971 4 123 4567',
-    mapLink: 'https://maps.google.com'
-  },
-  {
-    id: 'abudhabi',
-    city: 'Abu Dhabi',
-    country: 'United Arab Emirates',
-    address: 'Office 1205, Al Maryah Island, Abu Dhabi Global Market, Abu Dhabi, UAE',
-    phone: '+971 2 234 5678',
-    mapLink: 'https://maps.google.com'
-  },
-  {
-    id: 'riyadh',
-    city: 'Riyadh',
-    country: 'Kingdom of Saudi Arabia',
-    address: 'Office 3402, King Fahd Road, Olaya District, Riyadh, Saudi Arabia',
-    phone: '+966 11 345 6789',
-    mapLink: 'https://maps.google.com'
-  }];
+    {
+      id: 'dubai',
+      city: 'Dubai',
+      country: 'United Arab Emirates',
+      address: 'Office 2301, Burj Khalifa Boulevard, Downtown Dubai, Dubai, UAE',
+      phone: '+971 4 123 4567',
+      mapLink: 'https://maps.google.com'
+    },
+    {
+      id: 'abudhabi',
+      city: 'Abu Dhabi',
+      country: 'United Arab Emirates',
+      address: 'Office 1205, Al Maryah Island, Abu Dhabi Global Market, Abu Dhabi, UAE',
+      phone: '+971 2 234 5678',
+      mapLink: 'https://maps.google.com'
+    },
+    {
+      id: 'riyadh',
+      city: 'Riyadh',
+      country: 'Kingdom of Saudi Arabia',
+      address: 'Office 3402, King Fahd Road, Olaya District, Riyadh, Saudi Arabia',
+      phone: '+966 11 345 6789',
+      mapLink: 'https://maps.google.com'
+    }];
 
 
   return (
@@ -53,11 +53,11 @@ export default function OfficeLocations() {
         {/* Office Cards */}
         <div className="grid md:grid-cols-3 gap-8">
           {offices.map((office) =>
-          <div key={office.id} className="glass-card p-8 hover-glow reveal">
+            <div key={office.id} className="glass-card p-8 hover-glow reveal">
               {/* City Header */}
               <div className="flex items-center gap-3 mb-6">
                 <div className="h-12 w-12 rounded-xl bg-accent/20 flex items-center justify-center">
-                  <Icon name="MapPinIcon" size={24} variant="solid" className="text-accent" />
+                  <Icon name="MapPinIcon" size={24} variant="solid" className="text-white" />
                 </div>
                 <div>
                   <h3 className="text-xl font-bold text-foreground">{office.city}</h3>
@@ -81,13 +81,13 @@ export default function OfficeLocations() {
 
               {/* Map Link */}
               <a
-              href={office.mapLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-secondary w-full flex items-center justify-center gap-2">
+                href={office.mapLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-secondary text-white border-white w-full flex items-center justify-center gap-2">
 
                 View on Map
-                <Icon name="MapIcon" size={16} variant="outline" className="text-accent" />
+                <Icon name="MapIcon" size={16} variant="outline" className="text-white" />
               </a>
             </div>
           )}
