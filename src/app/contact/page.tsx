@@ -11,7 +11,48 @@ import Icon from '@/components/ui/AppIcon';
 export const metadata: Metadata = {
   title: 'Contact Us - Bridgemena | Schedule Free Consultation',
   description: 'Get in touch with Bridgemena for MENA market entry consultation. Offices in Dubai, Abu Dhabi, and Riyadh. 24-hour response time guaranteed.',
-  keywords: 'contact bridgemena, UAE business consultation, Dubai office, Riyadh office, free consultation, market entry support'
+  keywords: 'contact bridgemena, UAE business consultation, Dubai office, Riyadh office, free consultation, market entry support',
+  authors: [{ name: 'Bridgemena' }],
+  creator: 'Bridgemena',
+  publisher: 'Bridgemena',
+  metadataBase: new URL('https://bridgemena.com'),
+  alternates: {
+    canonical: '/contact',
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: '/contact',
+    title: 'Contact Bridgemena - Schedule Free MENA Market Entry Consultation',
+    description: 'Get in touch with Bridgemena for MENA market entry consultation. Offices in Dubai, Abu Dhabi, and Riyadh. 24-hour response time guaranteed.',
+    siteName: 'Bridgemena',
+    images: [
+      {
+        url: '/og-contact.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Contact Bridgemena',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Contact Bridgemena - Free MENA Market Entry Consultation',
+    description: 'Get in touch with our team across UAE and Saudi Arabia. 24-hour response time guaranteed.',
+    images: ['/og-contact.jpg'],
+    creator: '@bridgemena',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
 };
 
 export default function ContactPage() {

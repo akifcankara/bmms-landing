@@ -8,7 +8,48 @@ import ComparisonTable from './components/ComparisonTable';
 export const metadata: Metadata = {
   title: 'Services - Bridgemena | Company Formation, Visa, HR, Accounting & More',
   description: 'Comprehensive business services for MENA expansion: Company Formation (Freezone, Mainland), HR & Payroll, Visa Processing, Accounting, VAT, Tax, and more.',
-  keywords: 'UAE services, company formation UAE, visa processing, HR payroll, accounting UAE, VAT registration, corporate tax, business setup services'
+  keywords: 'UAE services, company formation UAE, visa processing, HR payroll, accounting UAE, VAT registration, corporate tax, business setup services',
+  authors: [{ name: 'Bridgemena' }],
+  creator: 'Bridgemena',
+  publisher: 'Bridgemena',
+  metadataBase: new URL('https://bridgemena.com'),
+  alternates: {
+    canonical: '/services',
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: '/services',
+    title: 'Business Services - Company Formation, Visa, HR & Accounting',
+    description: 'Comprehensive business services for MENA expansion: Company Formation (Freezone, Mainland), HR & Payroll, Visa Processing, Accounting, VAT, Tax, and more.',
+    siteName: 'Bridgemena',
+    images: [
+      {
+        url: '/og-services.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Bridgemena Business Services',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Bridgemena Services - Company Formation & Business Support',
+    description: 'Comprehensive business services for MENA expansion: Company Formation, HR & Payroll, Visa Processing, Accounting, VAT, Tax, and more.',
+    images: ['/og-services.jpg'],
+    creator: '@bridgemena',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
 };
 
 export default function ServicesPage() {

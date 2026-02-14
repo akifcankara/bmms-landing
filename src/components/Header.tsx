@@ -60,7 +60,7 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
         {/* Logo */}
         <Link
-          href="/homepage"
+          href="/"
           className="text-lg font-bold tracking-tight hover:text-accent transition-colors uppercase text-[rgba(59,130,246,0.8)]"
         >
           Bridgemena
