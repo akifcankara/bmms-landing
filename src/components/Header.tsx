@@ -8,6 +8,7 @@ import Icon from '@/components/ui/AppIcon';
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [expandedMobileMenu, setExpandedMobileMenu] = useState<string | null>(null);
   const pathname = usePathname();
 
   useEffect(() => {
@@ -40,8 +41,29 @@ export default function Header() {
 
   const navLinks = [
     { id: 'nav_home', label: 'Home', href: '/' },
-    { id: 'nav_services', label: 'Services', href: '/services' },
-    { id: 'nav_resources', label: 'Resources', href: '#resources' },
+    {
+      id: 'nav_services',
+      label: 'Services',
+      href: '/services',
+      subMenu: [
+        { label: 'Company Formation', href: '/services?filter=service&id=company-formation', description: 'Freezone, Mainland & Offshore setup' },
+        { label: 'Visa Services', href: '/services?filter=service&id=visa', description: 'Employment, Investor & Family visas' },
+        { label: 'HR & Payroll', href: '/services?filter=service&id=hr', description: 'Complete HR management solutions' },
+        { label: 'Accounting & Tax', href: '/services?filter=service&id=accounting', description: 'Bookkeeping, VAT & Corporate Tax' },
+        { label: 'PRO Services', href: '/services?filter=service&id=pro', description: 'Government liaison services' },
+      ],
+    },
+    {
+      id: 'nav_resources',
+      label: 'Resources',
+      href: '#resources',
+      subMenu: [
+        { label: 'UAE Free Zones', href: '#uae-freezones', description: 'Compare all UAE free zones' },
+        { label: 'KSA Guide', href: '#ksa-guide', description: 'Saudi Arabia business setup guide' },
+        { label: 'Cost Calculator', href: '#calculator', description: 'Estimate setup costs' },
+        { label: 'Blog', href: '#blog', description: 'Latest market insights' },
+      ],
+    },
     { id: 'nav_about', label: 'About', href: '#about' },
     { id: 'nav_contact', label: 'Contact', href: '/contact' },
   ];
@@ -69,15 +91,45 @@ export default function Header() {
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center gap-8 text-sm font-medium text-muted-foreground">
           {navLinks.map((link) => (
-            <Link
-              key={link.id}
-              href={link.href}
-              className={`transition-colors ${isActive(link.href)
-                ? 'text-accent font-semibold' : 'hover:text-primary'
+            <div key={link.id} className="relative group">
+              <Link
+                href={link.href}
+                className={`flex items-center gap-1 transition-colors ${
+                  isActive(link.href)
+                    ? 'text-accent font-semibold'
+                    : 'hover:text-primary'
                 }`}
-            >
-              {link.label}
-            </Link>
+              >
+                {link.label}
+                {link.subMenu && (
+                  <Icon name="ChevronDownIcon" size={14} variant="outline" className="transition-transform group-hover:rotate-180" />
+                )}
+              </Link>
+
+              {/* Dropdown Menu */}
+              {link.subMenu && (
+                <div className="fixed left-0 right-0 top-16 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 ease-in-out z-40">
+                  <div className="bg-white border-t border-gray-200 shadow-lg py-6">
+                    <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                      {link.subMenu.map((subItem, index) => (
+                        <Link
+                          key={index}
+                          href={subItem.href}
+                          className="block px-4 py-3 rounded-lg hover:bg-blue-50 transition-colors group/item"
+                        >
+                          <div className="font-semibold text-gray-800 text-sm group-hover/item:text-accent transition-colors">
+                            {subItem.label}
+                          </div>
+                          <div className="text-xs text-gray-500 mt-0.5">
+                            {subItem.description}
+                          </div>
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
           ))}
         </div>
 
@@ -139,20 +191,62 @@ export default function Header() {
         </div>
 
         {/* Menu Items */}
-        <div className="px-6 py-4 space-y-6">
+        <div className="px-6 py-4 space-y-4 overflow-y-auto max-h-[calc(100vh-180px)]">
           {navLinks.map((link) => (
-            <Link
-              key={link.id}
-              href={link.href}
-              onClick={() => setIsMobileMenuOpen(false)}
-              className={`block text-base font-medium transition-colors ${
-                isActive(link.href)
-                  ? 'text-accent font-semibold'
-                  : 'text-gray-800 hover:text-accent'
-              }`}
-            >
-              {link.label}
-            </Link>
+            <div key={link.id}>
+              {link.subMenu ? (
+                <div>
+                  {/* Parent Menu Item with Submenu */}
+                  <button
+                    onClick={() => setExpandedMobileMenu(expandedMobileMenu === link.id ? null : link.id)}
+                    className="flex items-center justify-between w-full text-base font-medium text-gray-800 hover:text-accent transition-colors"
+                  >
+                    {link.label}
+                    <Icon
+                      name="ChevronDownIcon"
+                      size={16}
+                      variant="outline"
+                      className={`transition-transform ${expandedMobileMenu === link.id ? 'rotate-180' : ''}`}
+                    />
+                  </button>
+
+                  {/* Submenu Items */}
+                  <div
+                    className={`mt-2 ml-4 space-y-2 overflow-hidden transition-all duration-300 ${
+                      expandedMobileMenu === link.id ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+                    }`}
+                  >
+                    {link.subMenu.map((subItem, index) => (
+                      <Link
+                        key={index}
+                        href={subItem.href}
+                        onClick={() => setIsMobileMenuOpen(false)}
+                        className="block py-2 border-l-2 border-gray-200 pl-4 hover:border-accent transition-colors"
+                      >
+                        <div className="text-sm font-semibold text-gray-700 hover:text-accent">
+                          {subItem.label}
+                        </div>
+                        <div className="text-xs text-gray-500 mt-0.5">
+                          {subItem.description}
+                        </div>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              ) : (
+                <Link
+                  href={link.href}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className={`block text-base font-medium transition-colors ${
+                    isActive(link.href)
+                      ? 'text-accent font-semibold'
+                      : 'text-gray-800 hover:text-accent'
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              )}
+            </div>
           ))}
 
           {/* CTA Button */}
