@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import Icon from '@/components/ui/AppIcon';
+import Image from 'next/image';
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -79,13 +80,13 @@ export default function Header() {
         ? 'bg-background/80 backdrop-blur-md border-b border-border' : 'bg-transparent'
         }`}
     >
-      <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
         {/* Logo */}
         <Link
           href="/"
           className="text-lg font-bold tracking-tight hover:text-accent transition-colors uppercase text-[rgba(59,130,246,0.8)]"
         >
-          Bridgemena
+          <Image src={'/logo.jpg'} alt='BMMS LOGO' width={145} height={145} className='rounded-md px-5' />
         </Link>
 
         {/* Desktop Navigation */}
@@ -94,11 +95,10 @@ export default function Header() {
             <div key={link.id} className="relative group">
               <Link
                 href={link.href}
-                className={`flex items-center gap-1 transition-colors ${
-                  isActive(link.href)
-                    ? 'text-accent font-semibold'
-                    : 'hover:text-primary'
-                }`}
+                className={`flex items-center gap-1 transition-colors ${isActive(link.href)
+                  ? 'text-accent font-semibold'
+                  : 'hover:text-primary'
+                  }`}
               >
                 {link.label}
                 {link.subMenu && (
@@ -173,26 +173,24 @@ export default function Header() {
 
       {/* Mobile Menu Overlay */}
       <div
-        className={`fixed inset-0 bg-black/50 backdrop-blur-sm z-40 md:hidden transition-opacity duration-300 ${
-          isMobileMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
-        }`}
+        className={`fixed inset-0 bg-black/50 backdrop-blur-sm z-40 md:hidden transition-opacity duration-300 ${isMobileMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
+          }`}
         onClick={() => setIsMobileMenuOpen(false)}
       />
 
       {/* Mobile Menu Slide Panel */}
       <div
-        className={`fixed top-0 left-0 h-full w-full bg-white z-50 md:hidden transform transition-transform duration-300 ease-in-out shadow-2xl ${
-          isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'
-        }`}
+        className={`fixed top-0 left-0 h-full w-full bg-white z-50 md:hidden transform transition-transform duration-300 ease-in-out shadow-2xl ${isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'
+          }`}
       >
         {/* Header with Logo and Close Button */}
         <div className="flex items-center justify-between p-6 border-b border-gray-200">
           <Link
             href="/"
             onClick={() => setIsMobileMenuOpen(false)}
-            className="text-lg font-bold tracking-tight uppercase text-[rgba(59,130,246,0.8)] hover:text-accent transition-colors"
+            className="t-2 text-lg font-bold tracking-tight uppercase text-[rgba(59,130,246,0.8)] hover:text-accent transition-colors"
           >
-            Bridgemena
+            <Image src={'/logo.jpg'} alt='BMMS LOGO' width={145} height={145} className='rounded-md' />
           </Link>
           <button
             onClick={() => setIsMobileMenuOpen(false)}
@@ -225,9 +223,8 @@ export default function Header() {
 
                   {/* Submenu Items */}
                   <div
-                    className={`mt-2 ml-4 space-y-2 overflow-hidden transition-all duration-300 ${
-                      expandedMobileMenu === link.id ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
-                    }`}
+                    className={`mt-2 ml-4 space-y-2 overflow-hidden transition-all duration-300 ${expandedMobileMenu === link.id ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+                      }`}
                   >
                     {link.subMenu.map((subItem, index) => (
                       <Link
@@ -250,11 +247,10 @@ export default function Header() {
                 <Link
                   href={link.href}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className={`block text-base font-medium transition-colors ${
-                    isActive(link.href)
-                      ? 'text-accent font-semibold'
-                      : 'text-gray-800 hover:text-accent'
-                  }`}
+                  className={`block text-base font-medium transition-colors ${isActive(link.href)
+                    ? 'text-accent font-semibold'
+                    : 'text-gray-800 hover:text-accent'
+                    }`}
                 >
                   {link.label}
                 </Link>

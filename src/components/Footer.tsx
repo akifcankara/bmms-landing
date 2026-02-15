@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Icon from '@/components/ui/AppIcon';
+import Image from 'next/image';
 
 export default function Footer() {
   const currentYear = 2026;
@@ -27,9 +28,7 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row justify-between items-center gap-6">
           {/* Logo + Copyright */}
           <div className="flex items-center gap-3 text-sm">
-            <span className="font-bold tracking-tight text-foreground uppercase">
-              Bridgemena
-            </span>
+            <Image src={'/logo.jpg'} alt='BMMS LOGO' width={145} height={145} />
             <span className="text-muted">|</span>
             <span className="text-muted-foreground">EST. 2010</span>
           </div>
