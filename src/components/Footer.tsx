@@ -5,14 +5,16 @@ import Image from 'next/image';
 export default function Footer() {
   const currentYear = 2026;
 
-  const footerLinks = [
-    { id: 'footer_company', label: 'Company', href: '#about' },
-    { id: 'footer_services', label: 'Services', href: '/services' },
-    { id: 'footer_resources', label: 'Resources', href: '#resources' },
-    { id: 'footer_careers', label: 'Careers', href: '#careers' },
+  const quickLinks = [
+    { id: 'footer_home', label: 'Home', href: '/' },
     { id: 'footer_contact', label: 'Contact', href: '/contact' },
-    { id: 'footer_privacy', label: 'Privacy', href: '#privacy' },
-    { id: 'footer_terms', label: 'Terms', href: '#terms' },
+  ];
+
+  const serviceLinks = [
+    { id: 'footer_all_services', label: 'All Services', href: '/services' },
+    { id: 'footer_by_profile', label: 'By Profile', href: '/services?filter=profile' },
+    { id: 'footer_by_industry', label: 'By Industry', href: '/services?filter=industry' },
+    { id: 'footer_by_service', label: 'By Service', href: '/services?filter=service' },
   ];
 
   const socialLinks = [
@@ -35,7 +37,19 @@ export default function Footer() {
 
           {/* Links */}
           <div className="flex flex-wrap justify-center gap-6 text-sm font-medium">
-            {footerLinks.map((link) => (
+            {/* Quick Links */}
+            {quickLinks.map((link) => (
+              <Link
+                key={link.id}
+                href={link.href}
+                className="text-muted-foreground hover:text-foreground transition-colors"
+              >
+                {link.label}
+              </Link>
+            ))}
+
+            {/* Service Links */}
+            {serviceLinks.map((link) => (
               <Link
                 key={link.id}
                 href={link.href}
@@ -47,7 +61,7 @@ export default function Footer() {
           </div>
 
           {/* Social Icons */}
-          <div className="flex gap-4">
+          {/* <div className="flex gap-4">
             {socialLinks.map((social) => (
               <a
                 key={social.id}
@@ -58,7 +72,7 @@ export default function Footer() {
                 <Icon name={social.icon as any} size={20} variant="outline" />
               </a>
             ))}
-          </div>
+          </div> */}
         </div>
 
         {/* Copyright Row */}
