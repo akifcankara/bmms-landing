@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Suspense } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import ServicesInteractive from './components/ServicesInteractive';
@@ -88,7 +89,13 @@ export default function ServicesPage() {
         {/* Services Grid with Filters */}
         <section className="px-6 mb-24">
           <div className="max-w-7xl mx-auto">
-            <ServicesInteractive />
+            <Suspense fallback={
+              <div className="flex justify-center items-center py-20">
+                <div className="text-muted-foreground">Loading services...</div>
+              </div>
+            }>
+              <ServicesInteractive />
+            </Suspense>
           </div>
         </section>
 
