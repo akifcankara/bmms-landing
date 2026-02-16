@@ -8,6 +8,7 @@ import FAQPreview from './components/FAQPreview';
 import Icon from '@/components/ui/AppIcon';
 import LocalBusinessSchema from '@/components/schema/LocalBusinessSchema';
 import BreadcrumbSchema from '@/components/schema/BreadcrumbSchema';
+import Link from 'next/link';
 
 
 export const metadata: Metadata = {
@@ -114,10 +115,12 @@ export default function ContactPage() {
               <p className="text-lg text-muted-foreground mb-8">
                 Schedule a 30-minute video call with our market entry experts at a time that works for you.
               </p>
-              <button className="btn-primary flex items-center justify-center gap-2 mx-auto">
-                Book 30-min Consultation
-                <Icon name="CalendarIcon" size={16} variant="outline" className="text-white" />
-              </button>
+              <Link href={'/contact'}>
+                <button className="btn-primary flex items-center justify-center gap-2 mx-auto">
+                  Book 30-min Consultation
+                  <Icon name="CalendarIcon" size={16} variant="outline" className="text-white" />
+                </button>
+              </Link>
             </div>
           </div>
         </section>
