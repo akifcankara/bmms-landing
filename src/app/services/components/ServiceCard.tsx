@@ -1,4 +1,5 @@
 import Icon from '@/components/ui/AppIcon';
+import Link from 'next/link';
 
 interface ServiceCardProps {
   title: string;
@@ -9,7 +10,7 @@ interface ServiceCardProps {
 
 export default function ServiceCard({ title, description, features, icon }: ServiceCardProps) {
   return (
-    <div className="glass-card p-8 hover-glow group transition-all">
+    <Link href={'/contact'} className="glass-card p-8 hover-glow group transition-all">
       {/* Icon */}
       <div className="h-14 w-14 rounded-xl bg-accent/20 flex items-center justify-center mb-6 group-hover:bg-accent/30 transition-colors">
         <Icon name={icon as any} size={28} variant="outline" className="text-white" />
@@ -38,6 +39,6 @@ export default function ServiceCard({ title, description, features, icon }: Serv
         Learn More
         <Icon name="ArrowRightIcon" size={16} variant="outline" className="text-white" />
       </button>
-    </div>
+    </Link>
   );
 }
