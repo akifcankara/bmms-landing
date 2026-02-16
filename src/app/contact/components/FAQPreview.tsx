@@ -90,14 +90,6 @@ export default function FAQPreview() {
             </div>
           ))}
         </div>
-
-        {/* View All Link */}
-        <div className="text-center mt-12 reveal">
-          <a href="#" className="inline-flex items-center gap-2 text-sm font-medium text-accent hover:gap-3 transition-all">
-            View All FAQs
-            <Icon name="ArrowRightIcon" size={16} variant="outline" className="text-accent" />
-          </a>
-        </div>
       </div>
     </section>
   );
