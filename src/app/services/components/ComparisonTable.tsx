@@ -1,4 +1,5 @@
 import Icon from '@/components/ui/AppIcon';
+import Link from 'next/link';
 
 interface Feature {
   id: string;
@@ -53,9 +54,8 @@ export default function ComparisonTable() {
                 {features.map((feature, index) => (
                   <tr
                     key={feature.id}
-                    className={`border-b border-border last:border-0 hover:bg-card/50 transition-colors ${
-                      index % 2 === 0 ? 'bg-card/20' : ''
-                    }`}
+                    className={`border-b border-border last:border-0 hover:bg-card/50 transition-colors ${index % 2 === 0 ? 'bg-card/20' : ''
+                      }`}
                   >
                     <td className="p-6 text-sm text-foreground font-medium">
                       {feature.name}
@@ -82,14 +82,16 @@ export default function ComparisonTable() {
         </div>
 
         {/* CTA */}
-        <div className="text-center mt-12 reveal">
-          <p className="text-sm text-muted-foreground mb-4">
-            Not sure which option is right for you?
-          </p>
-          <button className="btn-primary">
-            Schedule a Free Consultation
-          </button>
-        </div>
+        <Link href={'/contact'}>
+          <div className="text-center mt-12 reveal">
+            <p className="text-sm text-muted-foreground mb-4">
+              Not sure which option is right for you?
+            </p>
+            <button className="btn-primary">
+              Schedule a Free Consultation
+            </button>
+          </div>
+        </Link>
       </div>
     </section>
   );

@@ -6,6 +6,7 @@ import ProcessTimeline from './components/ProcessTimeline';
 import ComparisonTable from './components/ComparisonTable';
 import ServiceSchema from '@/components/schema/ServiceSchema';
 import BreadcrumbSchema from '@/components/schema/BreadcrumbSchema';
+import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: 'Services - Bridgemena | Company Formation, Visa, HR, Accounting & More',
@@ -102,9 +103,11 @@ export default function ServicesPage() {
                 Schedule a free consultation to discuss your specific needs and get a customized service package.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <button className="btn-primary">
-                  Schedule Consultation
-                </button>
+                <Link href={'/contact'}>
+                  <button className="btn-primary">
+                    Schedule Consultation
+                  </button>
+                </Link>
                 <button className="btn-secondary text-white border-white">
                   Download Services Brochure
                 </button>

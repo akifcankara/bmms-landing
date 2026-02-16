@@ -62,10 +62,9 @@ export default function ExpansionRegions() {
           {regions.map((region) => (
             <div
               key={region.id}
-              className={`glass-card p-8 cursor-pointer hover-glow reveal transition-all ${
-                selectedRegion === region.id ? 'border-accent' : ''
-              }`}
-              onClick={() => setSelectedRegion(region.id === selectedRegion ? null : region.id)}
+              className={`glass-card p-8 cursor-pointer hover-glow reveal transition-all ${selectedRegion === region.id ? 'border-accent' : ''
+                }`}
+              onClick={() => { }}
             >
               {/* Header */}
               <div className="flex items-start justify-between mb-6">
