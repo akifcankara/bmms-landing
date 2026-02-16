@@ -17,7 +17,7 @@ export default function OfficeLocations() {
       country: 'United Arab Emirates',
       address: 'Office 2301, Burj Khalifa Boulevard, Downtown Dubai, Dubai, UAE',
       phone: '+971 4 123 4567',
-      mapLink: 'https://maps.google.com'
+      mapLink: 'https://maps.app.goo.gl/M48kXM2UkzuKeacx7'
     },
     {
       id: 'abudhabi',
@@ -25,7 +25,7 @@ export default function OfficeLocations() {
       country: 'United Arab Emirates',
       address: 'Office 1205, Al Maryah Island, Abu Dhabi Global Market, Abu Dhabi, UAE',
       phone: '+971 2 234 5678',
-      mapLink: 'https://maps.google.com'
+      mapLink: 'https://maps.app.goo.gl/afAUCXTpNZ5wyLeTA'
     },
     {
       id: 'riyadh',
@@ -33,7 +33,7 @@ export default function OfficeLocations() {
       country: 'Kingdom of Saudi Arabia',
       address: 'Office 3402, King Fahd Road, Olaya District, Riyadh, Saudi Arabia',
       phone: '+966 11 345 6789',
-      mapLink: 'https://maps.google.com'
+      mapLink: 'https://maps.app.goo.gl/1Fw6XfWzSKjwDGDX7'
     }];
 
 
@@ -73,7 +73,7 @@ export default function OfficeLocations() {
                 </div>
                 <div className="flex items-center gap-3">
                   <Icon name="PhoneIcon" size={18} variant="outline" className="text-muted-foreground flex-shrink-0" />
-                  <a href={`tel:${office.phone.replace(/\s/g, '')}`} className="text-sm text-foreground hover:text-accent transition-colors">
+                  <a href={`tel:${office.phone.replace(/\s/g, '')}`} className="text-sm text-foreground transition-colors">
                     {office.phone}
                   </a>
                 </div>
@@ -84,7 +84,7 @@ export default function OfficeLocations() {
                 href={office.mapLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-secondary text-white border-white w-full flex items-center justify-center gap-2">
+                className="btn-secondary text-white border-white w-full flex items-center justify-center gap-2 hover:text-white">
 
                 View on Map
                 <Icon name="MapIcon" size={16} variant="outline" className="text-white" />
