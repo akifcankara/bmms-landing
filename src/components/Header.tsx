@@ -86,7 +86,7 @@ export default function Header() {
           href="/"
           className="text-lg font-bold tracking-tight hover:text-accent transition-colors uppercase text-[rgba(59,130,246,0.8)]"
         >
-          <Image src={'/logo.jpg'} alt='BMMS LOGO' width={145} height={145} className='rounded-md px-5' />
+          <Image src={'/logo.png'} alt='BMMS LOGO' width={145} height={145} className='rounded-md px-5' />
         </Link>
 
         {/* Desktop Navigation */}
@@ -190,7 +190,7 @@ export default function Header() {
             onClick={() => setIsMobileMenuOpen(false)}
             className="t-2 text-lg font-bold tracking-tight uppercase text-[rgba(59,130,246,0.8)] hover:text-accent transition-colors"
           >
-            <Image src={'/logo.jpg'} alt='BMMS LOGO' width={145} height={145} className='rounded-md' />
+            <Image src={'/logo.png'} alt='BMMS LOGO' width={145} height={145} className='rounded-md' />
           </Link>
           <button
             onClick={() => setIsMobileMenuOpen(false)}

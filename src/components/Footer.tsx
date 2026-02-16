@@ -28,7 +28,7 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row justify-between items-center gap-6">
           {/* Logo + Copyright */}
           <div className="flex items-center gap-3 text-sm">
-            <Image src={'/logo.jpg'} alt='BMMS LOGO' width={145} height={145} />
+            <Image src={'/logo-footer.png'} alt='BMMS LOGO' width={145} height={145} />
             <span className="text-muted">|</span>
             <span className="text-muted-foreground">EST. 2010</span>
           </div>
