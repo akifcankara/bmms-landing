@@ -63,14 +63,14 @@ export default function ProcessTimeline() {
               }
 
               {/* Step Card */}
-              <div className="relative glass-card p-6 text-center hover-glow">
+              <div className="relative glass-card p-6 text-center hover-glow min-h-[300px]">
                 {/* Number Badge */}
                 <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full bg-accent flex items-center justify-center text-accent-foreground font-bold text-sm">
                   {step.number}
                 </div>
 
                 {/* Icon */}
-                <div className="flex justify-center mb-4 mt-4">
+                <div className="flex justify-center mb-4 mt-6 pt-1">
                   <div className="h-12 w-12 rounded-xl bg-accent/20 flex items-center justify-center">
                     <Icon name={step.icon as any} size={24} variant="outline" className="text-white" />
                   </div>
