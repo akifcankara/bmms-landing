@@ -8,6 +8,7 @@ import FAQPreview from './components/FAQPreview';
 import Icon from '@/components/ui/AppIcon';
 import LocalBusinessSchema from '@/components/schema/LocalBusinessSchema';
 import BreadcrumbSchema from '@/components/schema/BreadcrumbSchema';
+import WebPageSchema from '@/components/schema/WebPageSchema';
 import Link from 'next/link';
 
 
@@ -66,6 +67,11 @@ export default function ContactPage() {
 
   return (
     <>
+      <WebPageSchema
+        name="Contact Bridgemena - Schedule Free Consultation"
+        description="Get in touch with Bridgemena for MENA market entry consultation. Offices in Dubai, Abu Dhabi, and Riyadh. 24-hour response time guaranteed."
+        url="/contact"
+      />
       <LocalBusinessSchema />
       <BreadcrumbSchema items={breadcrumbItems} />
       <Header />

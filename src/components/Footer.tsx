@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import Icon from '@/components/ui/AppIcon';
 import Image from 'next/image';
 
 export default function Footer() {
@@ -15,12 +14,6 @@ export default function Footer() {
     { id: 'footer_by_profile', label: 'By Profile', href: '/services?filter=profile' },
     { id: 'footer_by_industry', label: 'By Industry', href: '/services?filter=industry' },
     { id: 'footer_by_service', label: 'By Service', href: '/services?filter=service' },
-  ];
-
-  const socialLinks = [
-    { id: 'social_linkedin', icon: 'BuildingOffice2Icon', href: '#', label: 'LinkedIn' },
-    { id: 'social_twitter', icon: 'ChatBubbleLeftRightIcon', href: '#', label: 'Twitter' },
-    { id: 'social_instagram', icon: 'PhotoIcon', href: '#', label: 'Instagram' },
   ];
 
   return (

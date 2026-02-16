@@ -6,6 +6,7 @@ import ProcessTimeline from './components/ProcessTimeline';
 import ComparisonTable from './components/ComparisonTable';
 import ServiceSchema from '@/components/schema/ServiceSchema';
 import BreadcrumbSchema from '@/components/schema/BreadcrumbSchema';
+import WebPageSchema from '@/components/schema/WebPageSchema';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
@@ -63,6 +64,11 @@ export default function ServicesPage() {
 
   return (
     <>
+      <WebPageSchema
+        name="Business Services - Company Formation, Visa, HR & Accounting"
+        description="Comprehensive business services for MENA expansion: Company Formation (Freezone, Mainland), HR & Payroll, Visa Processing, Accounting, VAT, Tax, and more."
+        url="/services"
+      />
       <ServiceSchema />
       <BreadcrumbSchema items={breadcrumbItems} />
       <Header />

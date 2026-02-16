@@ -8,6 +8,7 @@ import WhySection from './components/WhySection';
 import IndustryFocus from './components/IndustryFocus';
 import CTASection from './components/CTASection';
 import FAQSchema from '@/components/schema/FAQSchema';
+import WebPageSchema from '@/components/schema/WebPageSchema';
 
 export const metadata: Metadata = {
   title: 'Bridgemena - Expand Your Business to MENA | UAE & KSA Market Entry',
@@ -59,6 +60,11 @@ export const metadata: Metadata = {
 export default function Homepage() {
   return (
     <>
+      <WebPageSchema
+        name="Bridgemena - MENA Market Entry Experts"
+        description="Full-service market entry, company formation, and business support across UAE and Saudi Arabia. 500+ companies launched. 15+ years experience."
+        url="/"
+      />
       <FAQSchema />
       <Header />
       <main className="min-h-screen">
