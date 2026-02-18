@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import ServiceFilters, { FilterType } from './ServiceFilters';
 import ServiceCard from './ServiceCard';
@@ -19,20 +18,13 @@ export default function ServicesInteractive() {
   const router = useRouter();
   const filterParam = searchParams.get('filter');
 
-  // URL'den gelen filter parametresini kontrol et, geçerli değilse 'profile' kullan
-  const getInitialFilter = (): FilterType => {
-    const validFilters: FilterType[] = ['profile', 'industry', 'service'];
-    if (filterParam && validFilters.includes(filterParam as FilterType)) {
-      return filterParam as FilterType;
-    }
-    return 'profile';
-  };
+  const validFilters: FilterType[] = ['profile', 'industry', 'service'];
+  const activeFilter: FilterType =
+    filterParam && validFilters.includes(filterParam as FilterType)
+      ? (filterParam as FilterType)
+      : 'profile';
 
-  const [activeFilter, setActiveFilter] = useState<FilterType>(getInitialFilter());
-
-  // Filtre değiştiğinde hem state'i güncelle hem de URL'i değiştir
   const handleFilterChange = (filter: FilterType) => {
-    setActiveFilter(filter);
     const params = new URLSearchParams(searchParams.toString());
     params.set('filter', filter);
     router.replace(`?${params.toString()}`, { scroll: false });
