@@ -5,7 +5,7 @@ import strapiClient from '@/lib/strapi';
 import type { HeroBadge, HeroAction, Hero, HeroImage } from '@/types/hero';
 
 export default async function HeroSection() {
-  const [{ data: badgesRes }, { data: actionsRes }, { data: heroRes }, { data: heroImageRes }] = await Promise.all([
+  const [badgesRes, actionsRes, heroRes, heroImageRes] = await Promise.all([
     strapiClient.get<{ data: HeroBadge[] }>('/hero-badges'),
     strapiClient.get<{ data: HeroAction[] }>('/hero-actions'),
     strapiClient.get<{ data: Hero[] }>('/heroes'),
