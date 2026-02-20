@@ -1,2 +1,2 @@
-git remote set-url origin https://github.com/akifcankara/bmms-landing
+git remote set-url origin https://github.com/techtile-software/bmms-landing
 git push
