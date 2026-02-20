@@ -1,16 +1,12 @@
-"use client";
-
-import { useState, useEffect } from 'react';
 import AppImage from '@/components/ui/AppImage';
 import Icon from '@/components/ui/AppIcon';
 import Link from 'next/link';
+import strapiClient from '@/lib/strapi';
+import type { HeroBadge } from '@/types/hero';
 
-export default function HeroSection() {
-  const [isHydrated, setIsHydrated] = useState(false);
-
-  useEffect(() => {
-    setIsHydrated(true);
-  }, []);
+export default async function HeroSection() {
+  const { data } = await strapiClient.get<{ data: HeroBadge[] }>('/hero-badges');
+  const badges = data.data;
 
   return (
     <section className="relative min-h-screen flex items-center mesh-gradient overflow-hidden pt-32 pb-20 px-6">
@@ -52,24 +48,14 @@ export default function HeroSection() {
 
             {/* Stats */}
             <div className="grid grid-cols-3 gap-6 pt-8 border-[rgba(138,148,173,1)]">
-              <div className="space-y-1">
-                <p className="text-3xl font-bold text-[rgba(113,156,198,1)]">15+</p>
-                <p className="text-xs text-muted-foreground uppercase tracking-widest">
-                  Years Experience
-                </p>
-              </div>
-              <div className="space-y-1">
-                <p className="text-3xl font-bold text-[rgba(113,156,198,1)]">50+</p>
-                <p className="text-xs text-muted-foreground uppercase tracking-widest">
-                  Free Zones
-                </p>
-              </div>
-              <div className="space-y-1">
-                <p className="text-3xl font-bold text-[rgba(113,156,198,1)]">24h</p>
-                <p className="text-xs text-muted-foreground uppercase tracking-widest">
-                  Response Time
-                </p>
-              </div>
+              {badges.map((badge) => (
+                <div key={badge.id} className="space-y-1">
+                  <p className="text-3xl font-bold text-[rgba(113,156,198,1)]">{badge.title}</p>
+                  <p className="text-xs text-muted-foreground uppercase tracking-widest">
+                    {badge.subtitle}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
 
