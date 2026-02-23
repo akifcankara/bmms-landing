@@ -41,7 +41,6 @@ export default function Header() {
   }, [pathname]);
 
   const navLinks = [
-    { id: 'nav_home', label: 'Home', href: '/' },
     {
       id: 'nav_services',
       label: 'Services',
@@ -65,8 +64,6 @@ export default function Header() {
         { label: 'Blog', href: '#blog', description: 'Latest market insights' },
       ],
     },
-    { id: 'nav_about', label: 'About', href: '#about' },
-    { id: 'nav_contact', label: 'Contact', href: '/contact' },
   ];
 
   const isActive = (href: string) => {
@@ -152,7 +149,7 @@ export default function Header() {
             href="/contact"
             className="hidden md:flex items-center gap-2 btn-primary"
           >
-            Get Started
+            Get Consultation
             <Icon name="ArrowRightIcon" size={16} variant="outline" className="text-white" />
           </Link>
 
