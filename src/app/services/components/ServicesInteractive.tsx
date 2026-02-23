@@ -286,11 +286,9 @@ export default function ServicesInteractive({ initialFilter = 'profile' }: Servi
 
   return (
     <div>
-      {/* Filters */}
       <ServiceFilters activeFilter={activeFilter} onFilterChange={handleFilterChange} />
 
-      {/* Service Cards Grid */}
-      <div className="grid md:grid-cols-3 gap-8 reveal">
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
         {filteredServices.map((service) => (
           <ServiceCard
             key={service.id}

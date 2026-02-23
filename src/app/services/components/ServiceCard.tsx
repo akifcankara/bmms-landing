@@ -10,35 +10,38 @@ interface ServiceCardProps {
 
 export default function ServiceCard({ title, description, features, icon }: ServiceCardProps) {
   return (
-    <Link href={'/contact'} className="glass-card p-8 hover-glow group transition-all">
-      {/* Icon */}
-      <div className="h-14 w-14 rounded-xl bg-accent/20 flex items-center justify-center mb-6 group-hover:bg-accent/30 transition-colors">
-        <Icon name={icon as any} size={28} variant="outline" className="text-white" />
+    <Link
+      href="/contact"
+      className="group p-[1px] rounded-2xl bg-gradient-to-b from-white/10 to-transparent hover:from-accent/40 hover:to-cyan-500/10 transition-all duration-300 flex flex-col"
+    >
+      <div className="bg-[#0f172a] rounded-2xl p-7 flex flex-col h-full">
+
+        {/* Icon */}
+        <div className="w-11 h-11 rounded-xl border border-white/10 flex items-center justify-center mb-5 group-hover:border-accent/40 group-hover:bg-accent/10 transition-all">
+          <Icon name={icon as any} size={20} variant="outline" className="text-accent" />
+        </div>
+
+        {/* Title + Description */}
+        <h3 className="text-lg font-bold text-foreground mb-2">{title}</h3>
+        <p className="text-sm text-white leading-relaxed mb-5">{description}</p>
+
+        {/* Features */}
+        <ul className="space-y-2 mb-6 flex-1">
+          {features.map((feature, index) => (
+            <li key={index} className="flex items-center gap-2 text-sm text-white">
+              <span className="w-1 h-1 rounded-full bg-accent flex-shrink-0" />
+              {feature}
+            </li>
+          ))}
+        </ul>
+
+        {/* CTA */}
+        <div className="flex items-center gap-2 text-sm font-semibold text-accent group-hover:gap-3 transition-all mt-auto">
+          Get Started
+          <Icon name="ArrowRightIcon" size={14} variant="outline" className="text-accent" />
+        </div>
+
       </div>
-
-      {/* Content */}
-      <h3 className="text-xl font-bold text-foreground mb-3 transition-colors">
-        {title}
-      </h3>
-      <p className="text-sm text-muted-foreground leading-relaxed mb-6">
-        {description}
-      </p>
-
-      {/* Features */}
-      <ul className="space-y-2 mb-6">
-        {features.map((feature, index) => (
-          <li key={index} className="flex items-start gap-2 text-sm text-foreground">
-            <Icon name="CheckCircleIcon" size={16} variant="solid" className="text-success flex-shrink-0 mt-0.5" />
-            <span>{feature}</span>
-          </li>
-        ))}
-      </ul>
-
-      {/* CTA */}
-      <button className="w-full btn-primary flex items-center justify-center gap-2 text-white">
-        Learn More
-        <Icon name="ArrowRightIcon" size={16} variant="outline" className="text-white" />
-      </button>
     </Link>
   );
 }
