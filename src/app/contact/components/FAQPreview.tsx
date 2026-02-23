@@ -50,14 +50,14 @@ export default function FAQPreview() {
   };
 
   return (
-    <section className="py-24 px-6 bg-background border-t border-border">
+    <section className="py-24 px-6 bg-background border-t border-white/10">
       <div className="max-w-4xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-12 reveal">
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-foreground mb-4">
             Frequently Asked Questions
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-lg text-white max-w-2xl mx-auto">
             Quick answers to common questions about MENA market entry and company formation.
           </p>
         </div>
@@ -82,7 +82,7 @@ export default function FAQPreview() {
               </button>
               {openId === faq.id && (
                 <div className="px-6 pb-6">
-                  <p className="text-sm text-muted-foreground leading-relaxed">
+                  <p className="text-sm text-white leading-relaxed">
                     {faq.answer}
                   </p>
                 </div>
