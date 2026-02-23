@@ -13,7 +13,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // Service filter pages
   const serviceFilters = ['profile', 'industry', 'service'].map((filter) => ({
-    url: `${baseUrl}/services?filter=${filter}`,
+    url: `${baseUrl}/services/${filter}`,
     lastModified: new Date().toISOString(),
     changeFrequency: 'weekly' as const,
     priority: 0.7,

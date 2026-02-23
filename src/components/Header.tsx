@@ -47,11 +47,11 @@ export default function Header() {
       label: 'Services',
       href: '/services',
       subMenu: [
-        { label: 'Company Formation', href: '/services?filter=service&id=company-formation', description: 'Freezone, Mainland & Offshore setup' },
-        { label: 'Visa Services', href: '/services?filter=service&id=visa', description: 'Employment, Investor & Family visas' },
-        { label: 'HR & Payroll', href: '/services?filter=service&id=hr', description: 'Complete HR management solutions' },
-        { label: 'Accounting & Tax', href: '/services?filter=service&id=accounting', description: 'Bookkeeping, VAT & Corporate Tax' },
-        { label: 'PRO Services', href: '/services?filter=service&id=pro', description: 'Government liaison services' },
+        { label: 'Company Formation', href: '/services/service', description: 'Freezone, Mainland & Offshore setup' },
+        { label: 'Visa Services', href: '/services/service', description: 'Employment, Investor & Family visas' },
+        { label: 'HR & Payroll', href: '/services/service', description: 'Complete HR management solutions' },
+        { label: 'Accounting & Tax', href: '/services/service', description: 'Bookkeeping, VAT & Corporate Tax' },
+        { label: 'PRO Services', href: '/services/service', description: 'Government liaison services' },
       ],
     },
     {

@@ -11,9 +11,9 @@ export default function Footer() {
 
   const serviceLinks = [
     { id: 'footer_all_services', label: 'All Services', href: '/services' },
-    { id: 'footer_by_profile', label: 'By Profile', href: '/services?filter=profile' },
-    { id: 'footer_by_industry', label: 'By Industry', href: '/services?filter=industry' },
-    { id: 'footer_by_service', label: 'By Service', href: '/services?filter=service' },
+    { id: 'footer_by_profile', label: 'By Profile', href: '/services/profile' },
+    { id: 'footer_by_industry', label: 'By Industry', href: '/services/industry' },
+    { id: 'footer_by_service', label: 'By Service', href: '/services/service' },
   ];
 
   return (

@@ -16,21 +16,21 @@ export default function ServicesOverview() {
       title: 'By Profile',
       description: 'Tailored solutions for Enterprise, SME, and Startups',
       icon: 'UserGroupIcon',
-      link: '/services?filter=profile',
+      link: '/services/profile',
     },
     {
       id: 'industry',
       title: 'By Industry',
       description: 'Specialized services for Technology, FinTech, Construction, and more',
       icon: 'BriefcaseIcon',
-      link: '/services?filter=industry',
+      link: '/services/industry',
     },
     {
       id: 'service',
       title: 'By Service',
       description: 'Company Formation, HR, Visa, Accounting, Tax, and more',
       icon: 'ClipboardDocumentListIcon',
-      link: '/services?filter=service',
+      link: '/services/service',
     },
   ];
 

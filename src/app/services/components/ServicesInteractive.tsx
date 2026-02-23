@@ -1,6 +1,6 @@
 "use client";
 
-import { useSearchParams, useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import ServiceFilters, { FilterType } from './ServiceFilters';
 import ServiceCard from './ServiceCard';
 
@@ -13,21 +13,16 @@ interface Service {
   categories: FilterType[];
 }
 
-export default function ServicesInteractive() {
-  const searchParams = useSearchParams();
-  const router = useRouter();
-  const filterParam = searchParams.get('filter');
+interface ServicesInteractiveProps {
+  initialFilter?: FilterType;
+}
 
-  const validFilters: FilterType[] = ['profile', 'industry', 'service'];
-  const activeFilter: FilterType =
-    filterParam && validFilters.includes(filterParam as FilterType)
-      ? (filterParam as FilterType)
-      : 'profile';
+export default function ServicesInteractive({ initialFilter = 'profile' }: ServicesInteractiveProps) {
+  const router = useRouter();
+  const activeFilter: FilterType = initialFilter;
 
   const handleFilterChange = (filter: FilterType) => {
-    const params = new URLSearchParams(searchParams.toString());
-    params.set('filter', filter);
-    router.replace(`?${params.toString()}`, { scroll: false });
+    router.push(`/services/${filter}`, { scroll: false });
   };
 
   const services: Service[] = [
