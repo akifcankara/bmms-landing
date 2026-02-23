@@ -117,29 +117,55 @@ export default function WhySection() {
           )}
         </div>
 
-        {/* Client Logo Marquee */}
-        <div className="reveal">
-          <p className="text-center text-sm font-medium text-muted-foreground mb-8 uppercase tracking-widest">
-            Trusted by Leading Companies
-          </p>
+        {/* Client Logos */}
+        <div>
+          <div className="flex items-center gap-4 mb-10">
+            <div className="flex-1 h-px bg-white/10" />
+            <p className="text-xs font-semibold text-white uppercase tracking-[0.3em] whitespace-nowrap">
+              Trusted by Leading Companies
+            </p>
+            <div className="flex-1 h-px bg-white/10" />
+          </div>
+
           <div className="relative overflow-hidden">
-            <div
-              ref={marqueeRef}
-              className="flex gap-12 animate-marquee"
-              style={{ width: 'fit-content' }}>
+            {/* Left + Right fade */}
+            <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
+            <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
 
-              {allLogos.map((logo, index) =>
+            {/* Row 1 — left to right */}
+            <div className="flex gap-6 animate-marquee mb-6" style={{ width: 'fit-content' }}>
+              {allLogos.map((logo, index) => (
                 <div
-                  key={`${logo.id}_${index}`}
-                  className="flex-shrink-0 w-32 h-16 glass-card p-4 flex items-center justify-center opacity-60 hover:opacity-100 transition-opacity">
-
-                  <AppImage
-                    src={logo.image}
-                    alt={logo.alt}
-                    className="w-full h-full object-contain grayscale hover:grayscale-0 transition-all" />
-
+                  key={`row1_${logo.id}_${index}`}
+                  className="flex-shrink-0 flex items-center gap-4 bg-white rounded-2xl px-8 py-4 h-24"
+                >
+                  <div className="w-36 h-full">
+                    <AppImage src={logo.image} alt={logo.alt} className="w-full h-full object-contain" />
+                  </div>
+                  <span className="text-base font-bold text-slate-800 whitespace-nowrap">{logo.name}</span>
                 </div>
-              )}
+              ))}
+            </div>
+
+            {/* Row 2 — right to left */}
+            <div
+              className="flex gap-6 mb-6"
+              style={{
+                width: 'fit-content',
+                animation: 'marquee 25s linear infinite reverse',
+              }}
+            >
+              {[...allLogos].reverse().map((logo, index) => (
+                <div
+                  key={`row2_${logo.id}_${index}`}
+                  className="flex-shrink-0 flex items-center gap-4 border border-white/10 rounded-2xl px-8 py-4 h-24"
+                >
+                  <div className="w-36 h-full">
+                    <AppImage src={logo.image} alt={logo.alt} className="w-full h-full object-contain rounded-lg" />
+                  </div>
+                  <span className="text-base font-bold text-white whitespace-nowrap">{logo.name}</span>
+                </div>
+              ))}
             </div>
           </div>
         </div>
