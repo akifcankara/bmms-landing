@@ -42,36 +42,45 @@ export default function ServicesOverview() {
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4 text-[rgba(98,145,192,1)]">
             Comprehensive Business Services
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-lg text-foreground/70 max-w-2xl mx-auto">
             From company formation to ongoing operations, we provide end-to-end support for your MENA expansion.
           </p>
         </div>
 
         {/* Service Categories Grid */}
-        <div className="grid md:grid-cols-3 gap-8">
-          {categories.map((category) => (
+        <div className="grid md:grid-cols-3 gap-6">
+          {categories.map((category, index) => (
             <Link
               key={category.id}
               href={category.link}
-              className="glass-card p-8 hover-glow reveal group transition-all text-left"
+              className="group p-[1px] rounded-2xl bg-gradient-to-br from-accent/30 via-white/5 to-transparent hover:from-accent/60 hover:to-cyan-500/20 transition-all duration-300"
             >
-              {/* Icon */}
-              <div className="h-14 w-14 rounded-xl bg-accent/20 flex items-center justify-center mb-6 group-hover:bg-accent/30 transition-colors">
-                <Icon name={category.icon as any} size={28} variant="outline" className="text-white" />
-              </div>
+              <div className="rounded-2xl p-8 h-full flex flex-col bg-background hover:-translate-y-1 transition-transform duration-300">
 
-              {/* Content */}
-              <h3 className="text-xl font-bold text-foreground mb-3 transition-colors">
-                {category.title}
-              </h3>
-              <p className="text-sm text-muted-foreground leading-relaxed mb-4 text-white">
-                {category.description}
-              </p>
+                {/* Number + Icon row */}
+                <div className="flex items-start justify-between mb-8">
+                  <span className="text-5xl font-black text-white group-hover:text-accent/20 transition-colors leading-none select-none">
+                    {String(index + 1).padStart(2, '0')}
+                  </span>
+                  <div className="h-11 w-11 rounded-xl border border-accent/20 flex items-center justify-center group-hover:border-accent/50 group-hover:bg-accent/10 transition-all">
+                    <Icon name={category.icon as any} size={22} variant="outline" className="text-accent" />
+                  </div>
+                </div>
 
-              {/* Link Arrow */}
-              <div className="flex items-center gap-2 text-sm font-medium text-white group-hover:gap-3 transition-all">
-                Explore Services
-                <Icon name="ArrowRightIcon" size={16} variant="outline" className="text-white" />
+                {/* Content */}
+                <h3 className="text-xl font-bold text-foreground mb-3">
+                  {category.title}
+                </h3>
+                <p className="text-sm text-white leading-relaxed flex-1 mb-6">
+                  {category.description}
+                </p>
+
+                {/* Link */}
+                <div className="flex items-center gap-2 text-sm font-semibold text-accent group-hover:gap-3 transition-all">
+                  Explore Services
+                  <Icon name="ArrowRightIcon" size={15} variant="outline" className="text-accent" />
+                </div>
+
               </div>
             </Link>
           ))}
