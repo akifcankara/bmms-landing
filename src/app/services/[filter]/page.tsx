@@ -59,7 +59,7 @@ const filterMeta: Record<FilterType, {
     description: 'Complete business services: Company Formation, Visa Processing, HR & Payroll, Accounting, VAT, Corporate Tax, and PRO Services.',
     heading: 'End-to-End Business Services',
     subheading: 'From company formation to ongoing compliance — everything your business needs in one place.',
-    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1600&q=80',
+    image: 'https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=1600&q=80',
     stats: [
       { value: '30+', label: 'Services Available' },
       { value: '100%', label: 'Foreign Ownership' },
