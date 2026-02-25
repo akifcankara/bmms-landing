@@ -21,7 +21,7 @@ export default function CTASection() {
 
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-              <Link href="/contact" className="btn-primary flex items-center justify-center gap-2">
+              <Link href="/get-consultation" className="btn-primary flex items-center justify-center gap-2">
                 Schedule Free Consultation
                 <Icon name="CalendarIcon" size={16} variant="outline" className="text-white" />
               </Link>

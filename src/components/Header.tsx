@@ -113,7 +113,7 @@ export default function Header() {
           {/* CTA + Mobile */}
           <div className="flex items-center gap-2">
             <Link
-              href="/contact"
+              href="/get-consultation"
               className="hidden md:flex items-center gap-1.5 text-sm font-semibold text-white bg-accent hover:bg-accent/90 px-4 py-2 rounded-xl transition-all duration-200 shadow-[0_0_16px_-4px_rgba(59,130,246,0.6)]"
             >
               Get Consultation
@@ -197,7 +197,7 @@ export default function Header() {
 
         <div className="absolute bottom-8 left-4 right-4">
           <Link
-            href="/contact"
+            href="/get-consultation"
             onClick={() => setIsMobileMenuOpen(false)}
             className="flex items-center justify-center gap-2 w-full btn-primary"
           >
