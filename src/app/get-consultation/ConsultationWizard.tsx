@@ -438,7 +438,7 @@ function SidebarStep({
       type="button"
       onClick={onClick}
       disabled={step.id > currentStep}
-      className={`w-full flex items-start gap-3 px-4 py-3.5 rounded-xl text-left transition-all duration-200 group disabled:cursor-not-allowed ${
+      className={`w-full flex items-start gap-3 px-4 py-3 rounded-xl text-left transition-all duration-200 group disabled:cursor-not-allowed ${
         isActive ? 'bg-blue-50 border border-blue-100' : 'hover:bg-slate-50 border border-transparent'
       }`}
     >
@@ -585,7 +585,7 @@ export default function ConsultationWizard() {
           </div>
 
           {/* Step list */}
-          <nav className="flex-1 px-3 py-2 space-y-1 overflow-y-auto">
+          <nav className="flex-1 px-3 space-y-1 overflow-hidden">
             {STEPS.map((s) => (
               <SidebarStep
                 key={s.id}
