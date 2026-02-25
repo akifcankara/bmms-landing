@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -529,6 +529,10 @@ export default function ConsultationWizard() {
   const canProceed = isStepComplete(step, formData);
   const completedCount = STEPS.filter((s) => isStepComplete(s.id, formData)).length;
   const progressPct = (completedCount / 5) * 100;
+
+  useEffect(() => {
+    document.querySelector('main')?.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [step])
 
   return (
     <div className="h-screen bg-slate-100 flex flex-col overflow-hidden">
