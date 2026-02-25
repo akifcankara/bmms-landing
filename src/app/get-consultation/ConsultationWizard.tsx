@@ -531,7 +531,7 @@ export default function ConsultationWizard() {
   const progressPct = (completedCount / 5) * 100;
 
   return (
-    <div className="min-h-screen bg-slate-50 flex flex-col">
+    <div className="h-screen bg-slate-100 flex flex-col overflow-hidden">
 
       {/* ── Top bar ── */}
       <header className="bg-white border-b border-slate-100 px-6 h-16 flex items-center justify-between flex-shrink-0 z-20">
@@ -567,7 +567,7 @@ export default function ConsultationWizard() {
       <div className="flex-1 flex overflow-hidden">
 
         {/* ── Sidebar ── */}
-        <aside className="hidden lg:flex flex-col w-96 xl:w-[420px] bg-white border-r border-slate-100 flex-shrink-0">
+        <aside className="hidden lg:flex flex-col w-96 xl:w-[420px] bg-white border-r border-slate-200 shadow-[4px_0_24px_-4px_rgba(0,0,0,0.08)] flex-shrink-0 z-10">
 
           {/* Progress bar */}
           <div className="px-6 pt-6 pb-4">
@@ -628,155 +628,231 @@ export default function ConsultationWizard() {
 
         {/* ── Main content ── */}
         <main className="flex-1 overflow-y-auto">
-          <div className="max-w-2xl mx-auto px-5 sm:px-8 py-10 lg:py-12">
+          <div className="flex min-h-full">
 
-            {!submitted ? (
-              <>
-                {/* Animated form */}
-                <AnimatePresence mode="wait" custom={direction}>
-                  <motion.div
-                    key={step}
-                    custom={direction}
-                    variants={{
-                      enter: (dir: number) => ({ x: dir > 0 ? 48 : -48, opacity: 0 }),
-                      center: { x: 0, opacity: 1 },
-                      exit: (dir: number) => ({ x: dir > 0 ? -48 : 48, opacity: 0 }),
-                    }}
-                    initial="enter"
-                    animate="center"
-                    exit="exit"
-                    transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                  >
-                    {step === 1 && <Step1 data={formData} update={update} />}
-                    {step === 2 && <Step2 data={formData} update={update} />}
-                    {step === 3 && <Step3 data={formData} update={update} />}
-                    {step === 4 && <Step4 data={formData} update={update} />}
-                    {step === 5 && <Step5 data={formData} update={update} />}
-                  </motion.div>
-                </AnimatePresence>
-
-                {/* Navigation */}
-                <div className="flex items-center gap-3 mt-10 pt-8 border-t border-slate-100">
-                  {step > 1 && (
-                    <button
-                      type="button"
-                      onClick={goBack}
-                      className="flex items-center gap-2 px-5 py-3 rounded-xl border-2 border-slate-200 bg-white text-sm font-semibold text-slate-600 hover:bg-slate-50 hover:border-slate-300 transition-all"
+            {/* ── Form column ── */}
+            <div className="flex-1 min-w-0 px-8 xl:px-12 py-10 lg:py-12">
+              {!submitted ? (
+                <>
+                  <AnimatePresence mode="wait" custom={direction}>
+                    <motion.div
+                      key={step}
+                      custom={direction}
+                      variants={{
+                        enter: (dir: number) => ({ x: dir > 0 ? 48 : -48, opacity: 0 }),
+                        center: { x: 0, opacity: 1 },
+                        exit: (dir: number) => ({ x: dir > 0 ? -48 : 48, opacity: 0 }),
+                      }}
+                      initial="enter"
+                      animate="center"
+                      exit="exit"
+                      transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
                     >
-                      <Icon name="ArrowLeftIcon" size={14} variant="outline" />
-                      Back
-                    </button>
-                  )}
-                  <div className="flex-1" />
+                      {step === 1 && <Step1 data={formData} update={update} />}
+                      {step === 2 && <Step2 data={formData} update={update} />}
+                      {step === 3 && <Step3 data={formData} update={update} />}
+                      {step === 4 && <Step4 data={formData} update={update} />}
+                      {step === 5 && <Step5 data={formData} update={update} />}
+                    </motion.div>
+                  </AnimatePresence>
 
-                  {step < 5 ? (
-                    <motion.button
-                      type="button"
-                      onClick={goNext}
-                      disabled={!canProceed}
-                      whileHover={canProceed ? { scale: 1.02 } : {}}
-                      whileTap={canProceed ? { scale: 0.97 } : {}}
-                      className={`flex items-center gap-2 px-8 py-3 rounded-xl text-sm font-bold transition-all duration-200 ${
-                        canProceed
-                          ? 'bg-blue-600 hover:bg-blue-700 text-white shadow-lg shadow-blue-600/20'
-                          : 'bg-slate-100 text-slate-300 cursor-not-allowed'
-                      }`}
-                    >
-                      Continue
-                      <Icon name="ArrowRightIcon" size={14} variant="outline" />
-                    </motion.button>
-                  ) : (
-                    <motion.button
-                      type="button"
-                      onClick={handleSubmit}
-                      disabled={!canProceed || isSubmitting}
-                      whileHover={canProceed && !isSubmitting ? { scale: 1.02 } : {}}
-                      whileTap={canProceed && !isSubmitting ? { scale: 0.97 } : {}}
-                      className={`flex items-center gap-2 px-8 py-3 rounded-xl text-sm font-bold transition-all duration-200 ${
-                        canProceed && !isSubmitting
-                          ? 'bg-blue-600 hover:bg-blue-700 text-white shadow-lg shadow-blue-600/20'
-                          : 'bg-slate-100 text-slate-300 cursor-not-allowed'
-                      }`}
-                    >
-                      {isSubmitting ? (
-                        <>
-                          <Icon name="ArrowPathIcon" size={14} variant="outline" className="animate-spin" />
-                          Sending...
-                        </>
-                      ) : (
-                        <>
-                          Get My Free Proposal
-                          <Icon name="PaperAirplaneIcon" size={14} variant="outline" />
-                        </>
-                      )}
-                    </motion.button>
-                  )}
-                </div>
+                  {/* Navigation */}
+                  <div className="flex items-center gap-3 mt-10 pt-8 border-t border-slate-200">
+                    {step > 1 && (
+                      <button
+                        type="button"
+                        onClick={goBack}
+                        className="flex items-center gap-2 px-5 py-3 rounded-xl border-2 border-slate-200 bg-white text-sm font-semibold text-slate-600 hover:bg-slate-50 hover:border-slate-300 transition-all"
+                      >
+                        <Icon name="ArrowLeftIcon" size={14} variant="outline" />
+                        Back
+                      </button>
+                    )}
+                    <div className="flex-1" />
+                    {step < 5 ? (
+                      <motion.button
+                        type="button"
+                        onClick={goNext}
+                        disabled={!canProceed}
+                        whileHover={canProceed ? { scale: 1.02 } : {}}
+                        whileTap={canProceed ? { scale: 0.97 } : {}}
+                        className={`flex items-center gap-2 px-8 py-3 rounded-xl text-sm font-bold transition-all duration-200 ${
+                          canProceed
+                            ? 'bg-blue-600 hover:bg-blue-700 text-white shadow-lg shadow-blue-600/20'
+                            : 'bg-slate-200 text-slate-400 cursor-not-allowed'
+                        }`}
+                      >
+                        Continue
+                        <Icon name="ArrowRightIcon" size={14} variant="outline" />
+                      </motion.button>
+                    ) : (
+                      <motion.button
+                        type="button"
+                        onClick={handleSubmit}
+                        disabled={!canProceed || isSubmitting}
+                        whileHover={canProceed && !isSubmitting ? { scale: 1.02 } : {}}
+                        whileTap={canProceed && !isSubmitting ? { scale: 0.97 } : {}}
+                        className={`flex items-center gap-2 px-8 py-3 rounded-xl text-sm font-bold transition-all duration-200 ${
+                          canProceed && !isSubmitting
+                            ? 'bg-blue-600 hover:bg-blue-700 text-white shadow-lg shadow-blue-600/20'
+                            : 'bg-slate-200 text-slate-400 cursor-not-allowed'
+                        }`}
+                      >
+                        {isSubmitting ? (
+                          <>
+                            <Icon name="ArrowPathIcon" size={14} variant="outline" className="animate-spin" />
+                            Sending...
+                          </>
+                        ) : (
+                          <>
+                            Get My Free Proposal
+                            <Icon name="PaperAirplaneIcon" size={14} variant="outline" />
+                          </>
+                        )}
+                      </motion.button>
+                    )}
+                  </div>
 
-                <p className="text-xs text-slate-400 text-center mt-5 flex items-center justify-center gap-1.5">
-                  <Icon name="LockClosedIcon" size={11} variant="outline" className="text-slate-300" />
-                  Your information is secure and will never be shared.
-                </p>
-              </>
-            ) : (
-              /* ── Success ── */
-              <motion.div
-                initial={{ opacity: 0, y: 24 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                className="text-center py-16"
-              >
+                  <p className="text-xs text-slate-400 text-center mt-5 flex items-center justify-center gap-1.5">
+                    <Icon name="LockClosedIcon" size={11} variant="outline" className="text-slate-300" />
+                    Your information is secure and will never be shared.
+                  </p>
+                </>
+              ) : (
+                /* ── Success ── */
                 <motion.div
-                  initial={{ scale: 0, rotate: -10 }}
-                  animate={{ scale: 1, rotate: 0 }}
-                  transition={{ delay: 0.1, type: 'spring', stiffness: 260, damping: 18 }}
-                  className="w-20 h-20 rounded-2xl bg-emerald-100 flex items-center justify-center mx-auto mb-6"
+                  initial={{ opacity: 0, y: 24 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                  className="text-center py-16"
                 >
-                  <Icon name="CheckCircleIcon" size={40} variant="solid" className="text-emerald-500" />
-                </motion.div>
-
-                <h2 className="text-2xl font-bold text-slate-900 mb-2">Proposal on its way, {formData.firstName}!</h2>
-                <p className="text-slate-500 text-sm mb-1 max-w-sm mx-auto">
-                  We're preparing your personalised business setup estimate.
-                </p>
-                <p className="text-slate-400 text-xs mb-10">
-                  Our team will follow up within 24 hours to walk you through the next steps.
-                </p>
-
-                <div className="flex flex-col sm:flex-row gap-3 justify-center">
-                  <Link
-                    href="/"
-                    className="flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-blue-600 text-white text-sm font-semibold hover:bg-blue-700 transition-all shadow-lg shadow-blue-600/20"
+                  <motion.div
+                    initial={{ scale: 0, rotate: -10 }}
+                    animate={{ scale: 1, rotate: 0 }}
+                    transition={{ delay: 0.1, type: 'spring', stiffness: 260, damping: 18 }}
+                    className="w-20 h-20 rounded-2xl bg-emerald-100 flex items-center justify-center mx-auto mb-6"
                   >
-                    <Icon name="HomeIcon" size={15} variant="outline" className="text-white" />
-                    Back to Homepage
-                  </Link>
-                  <Link
-                    href="/contact"
-                    className="flex items-center justify-center gap-2 px-6 py-3 rounded-xl border-2 border-slate-200 bg-white text-slate-700 text-sm font-semibold hover:bg-slate-50 transition-all"
-                  >
-                    Talk to an Expert
-                    <Icon name="PhoneIcon" size={15} variant="outline" />
-                  </Link>
-                </div>
-
-                <div className="mt-12 pt-10 border-t border-slate-100 grid grid-cols-3 gap-8">
-                  {[
-                    { icon: 'BuildingOffice2Icon', value: '500+', label: 'Companies Formed' },
-                    { icon: 'ClockIcon', value: '15+', label: 'Years Experience' },
-                    { icon: 'MapPinIcon', value: '50+', label: 'Free Zones' },
-                  ].map((stat) => (
-                    <div key={stat.label} className="text-center">
-                      <div className="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center mx-auto mb-2">
-                        <Icon name={stat.icon} size={18} variant="outline" className="text-blue-600" />
+                    <Icon name="CheckCircleIcon" size={40} variant="solid" className="text-emerald-500" />
+                  </motion.div>
+                  <h2 className="text-2xl font-bold text-slate-900 mb-2">Proposal on its way, {formData.firstName}!</h2>
+                  <p className="text-slate-500 text-sm mb-1 max-w-sm mx-auto">
+                    We're preparing your personalised business setup estimate.
+                  </p>
+                  <p className="text-slate-400 text-xs mb-10">
+                    Our team will follow up within 24 hours to walk you through the next steps.
+                  </p>
+                  <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                    <Link
+                      href="/"
+                      className="flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-blue-600 text-white text-sm font-semibold hover:bg-blue-700 transition-all shadow-lg shadow-blue-600/20"
+                    >
+                      <Icon name="HomeIcon" size={15} variant="outline" className="text-white" />
+                      Back to Homepage
+                    </Link>
+                    <Link
+                      href="/contact"
+                      className="flex items-center justify-center gap-2 px-6 py-3 rounded-xl border-2 border-slate-200 bg-white text-slate-700 text-sm font-semibold hover:bg-slate-50 transition-all"
+                    >
+                      Talk to an Expert
+                      <Icon name="PhoneIcon" size={15} variant="outline" />
+                    </Link>
+                  </div>
+                  <div className="mt-12 pt-10 border-t border-slate-100 grid grid-cols-3 gap-8">
+                    {[
+                      { icon: 'BuildingOffice2Icon', value: '500+', label: 'Companies Formed' },
+                      { icon: 'ClockIcon', value: '15+', label: 'Years Experience' },
+                      { icon: 'MapPinIcon', value: '50+', label: 'Free Zones' },
+                    ].map((stat) => (
+                      <div key={stat.label} className="text-center">
+                        <div className="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center mx-auto mb-2">
+                          <Icon name={stat.icon} size={18} variant="outline" className="text-blue-600" />
+                        </div>
+                        <p className="text-2xl font-black text-slate-900">{stat.value}</p>
+                        <p className="text-xs text-slate-400 mt-0.5 uppercase tracking-wider">{stat.label}</p>
                       </div>
-                      <p className="text-2xl font-black text-slate-900">{stat.value}</p>
-                      <p className="text-xs text-slate-400 mt-0.5 uppercase tracking-wider">{stat.label}</p>
+                    ))}
+                  </div>
+                </motion.div>
+              )}
+            </div>
+
+            {/* ── Right info panel ── */}
+            <div className="hidden xl:flex flex-col w-[320px] 2xl:w-[360px] flex-shrink-0 py-10 pr-8 gap-5">
+
+              {/* What's included */}
+              <div className="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm">
+                <div className="flex items-center gap-2.5 mb-4">
+                  <div className="w-8 h-8 rounded-lg bg-blue-50 flex items-center justify-center">
+                    <Icon name="DocumentTextIcon" size={16} variant="outline" className="text-blue-600" />
+                  </div>
+                  <p className="text-sm font-bold text-slate-800">What's in your proposal</p>
+                </div>
+                <ul className="space-y-2.5">
+                  {[
+                    'Free Zone vs Mainland comparison',
+                    'Full setup cost breakdown',
+                    'Visa & licensing requirements',
+                    'Estimated timeline to launch',
+                    'Dedicated advisor assignment',
+                  ].map((item) => (
+                    <li key={item} className="flex items-start gap-2.5">
+                      <div className="w-4 h-4 rounded-full bg-emerald-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <Icon name="CheckIcon" size={10} variant="outline" className="text-emerald-600" />
+                      </div>
+                      <span className="text-xs text-slate-600 leading-relaxed">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* What happens next */}
+              <div className="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm">
+                <div className="flex items-center gap-2.5 mb-5">
+                  <div className="w-8 h-8 rounded-lg bg-blue-50 flex items-center justify-center">
+                    <Icon name="ArrowPathIcon" size={16} variant="outline" className="text-blue-600" />
+                  </div>
+                  <p className="text-sm font-bold text-slate-800">What happens next</p>
+                </div>
+                <div className="space-y-4">
+                  {[
+                    { step: '1', icon: 'PaperAirplaneIcon', title: 'Submit your details', desc: 'Complete the 5-step form', color: 'bg-blue-600' },
+                    { step: '2', icon: 'CpuChipIcon', title: 'Proposal prepared', desc: 'Ready within 2 hours', color: 'bg-violet-500' },
+                    { step: '3', icon: 'PhoneIcon', title: 'Expert follow-up', desc: 'Call within 24 hours', color: 'bg-emerald-500' },
+                  ].map((item, i, arr) => (
+                    <div key={item.step} className="flex gap-3">
+                      <div className="flex flex-col items-center">
+                        <div className={`w-7 h-7 rounded-full ${item.color} flex items-center justify-center flex-shrink-0`}>
+                          <Icon name={item.icon} size={13} variant="outline" className="text-white" />
+                        </div>
+                        {i < arr.length - 1 && <div className="w-px flex-1 bg-slate-100 mt-1.5 mb-0" />}
+                      </div>
+                      <div className="pb-4">
+                        <p className="text-xs font-bold text-slate-800">{item.title}</p>
+                        <p className="text-xs text-slate-400 mt-0.5">{item.desc}</p>
+                      </div>
                     </div>
                   ))}
                 </div>
-              </motion.div>
-            )}
+              </div>
+
+              {/* Testimonial */}
+              <div className="bg-blue-600 rounded-2xl p-6 shadow-lg shadow-blue-600/20">
+                <Icon name="ChatBubbleLeftEllipsisIcon" size={22} variant="solid" className="text-blue-300 mb-4" />
+                <p className="text-sm text-white/90 leading-relaxed mb-5">
+                  "Bridgemena made our Dubai setup seamless. Free zone selection, trade licence, visa approvals — all handled in 5 days."
+                </p>
+                <div className="flex items-center gap-3">
+                  <div className="w-9 h-9 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0">
+                    <Icon name="UserCircleIcon" size={20} variant="solid" className="text-white/70" />
+                  </div>
+                  <div>
+                    <p className="text-xs font-bold text-white">Ahmed K.</p>
+                    <p className="text-xs text-blue-200">CEO, TechVenture Dubai</p>
+                  </div>
+                </div>
+              </div>
+
+            </div>
           </div>
         </main>
       </div>
